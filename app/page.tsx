@@ -1,5 +1,5 @@
-"use client";
 // @ts-nocheck
+"use client";
 import im1 from "@/public/1.jpg";
 import im2 from "@/public/2.jpg";
 import im3 from "@/public/next.jpg";
