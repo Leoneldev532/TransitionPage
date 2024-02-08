@@ -1,4 +1,5 @@
 "use client";
+// @ts-nocheck
 import im1 from "@/public/1.jpg";
 import im2 from "@/public/2.jpg";
 import im3 from "@/public/next.jpg";
@@ -408,7 +409,7 @@ export default function Home() {
   return (
     <main className=" relative text-white page  leading-normal bg-black-400 flex min-h-screen flex-col items-center justify-start w-full">
       <h2 className="text-8xl py-8 text-gray-800 font-extrabold">
-        Caroussel Effect
+        Voyagez Avec Assurance
       </h2>
       <div className="w-full bg-blue-400  flex flex-col  relative">
         <div className="h-auto flex z-0 pt-36  justify-start absolute w-full ">
@@ -438,7 +439,7 @@ export default function Home() {
                   statetxt.isActive3txt ? "active " : null
                 } absolute`}
               >
-                P024 4L25 2O23 K520 P024 4L25 P024 4L25 2O23 K520 P024 4L25 P024
+                O024 PL25 2O23 K520 P024 4L25 P024 4L25 2O23 K520 P024 4L25 P024
                 4L25 2O23 K520 P024 4L25 P024 4L25 2O23 K520 P024 4L25
               </h2>
             </div>
@@ -454,7 +455,7 @@ export default function Home() {
               <div
                 className={`bg-blue-400 ${
                   state.isActive1 ? "active" : null
-                }    min-w-[640px] h-[640px] object-cover`}
+                }    min-w-[640px] h-[640px] `}
               >
                 <Image
                   src={im1}
@@ -466,12 +467,12 @@ export default function Home() {
               <div
                 className={` ${
                   state.isActive2 ? "active" : null
-                }  min-w-[640px]   h-[640px] object-cover`}
+                }  min-w-[640px]   h-[640px] `}
               >
                 <Image
                   src={im2}
                   alt="hello"
-                  className="w-full h-full"
+                  className="w-full h-full object-cover"
                   height={640}
                   width={640}
                 />
@@ -480,12 +481,12 @@ export default function Home() {
               <div
                 className={` ${
                   state.isActive3 ? "active" : null
-                }   min-w-[640px] h-[640px] object-cover`}
+                }   min-w-[640px] h-[640px] `}
               >
                 <Image
                   src={im3}
                   alt="hello"
-                  className="w-full h-full"
+                  className="w-full h-full object-cover"
                   height={640}
                   width={640}
                 />
@@ -502,7 +503,7 @@ export default function Home() {
                 <div className="text-4xl  h-12 overflow-hidden font-bold">
                   <h2 className="title1">Travel Around the World</h2>
                 </div>
-                <p className="w-1/2 description pr-40 text-2xl">
+                <p className="w-1/2 description transition-all ease duration-400 pr-40 text-2xl">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit 55.
                   Fugiat porro nobis magnam earum dolorum beatae, accusamus
                   magni voluptates sapiente quam ratione quae similique dolorem
@@ -518,7 +519,7 @@ export default function Home() {
                 <div className="text-4xl   h-12 overflow-hidden font-bold">
                   <h2 className="title2">Read The best Book during Travel</h2>
                 </div>
-                <p className="w-1/2 description  pr-40 text-2xl">
+                <p className="w-1/2 description transition-all ease duration-400  pr-40 text-2xl">
                   t is a long established fact that a reader will be distracted
                   by the readable content of a page when looking at its layout.
                   The point of using Lorem Ipsum is that it has a more-or-less
@@ -534,7 +535,7 @@ export default function Home() {
                 <div className="text-4xl    h-12 overflow-hidden font-bold">
                   <h2 className="title3"> Make the News Discovers</h2>
                 </div>
-                <p className="w-1/2 description  pr-40 text-2xl">
+                <p className="w-1/2 description  transition-all ease duration-400 pr-40 text-2xl">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown
