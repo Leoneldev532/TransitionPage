@@ -59,3 +59,10 @@ body {
 .txt1:hover {
   opacity: 1 !important;
 }
+.bdg {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+  /* background-image: url("../public/2.jpg"); */
+  background-size: cover;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  background-position: 50% 50%;
+}

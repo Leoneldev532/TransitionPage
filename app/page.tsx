@@ -2,144 +2,108 @@
 "use client";
 
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  gsap.registerPlugin(ScrollTrigger);
-  const [state, setState] = useState(false);
   const tl = gsap.timeline();
-  // Nouvelle instance de timeline
-  const HandleCLick = () => {
-    tl.to(".header", {
-      x: "-100%",
-      duration: 0.3,
-    }).from(".txt1", {
-      y: 100,
-      delay: 0.3,
-      skewY: 10,
-      ease: "sine",
-      duration: 0.6,
-      transformOrigin: "50% 50% ",
-      opacity: 0,
-      autoAlpha: 0,
-      stagger: {
-        amount: 0.7,
+  const [state, setState] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    const handelemove = (e) => {
+      setState({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handelemove);
+  });
+
+  const txt = gsap.utils.toArray(".txt1");
+
+  const handle = () => {
+    tl.to(
+      ".bdg",
+      {
+        clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
+        duration: 0.3,
+        ease: "sine",
       },
-    });
-    setState(true);
+      "<"
+    )
+      .from(".h2high", {
+        delay: 0.2,
+        y: 100,
+        skewY: 10,
+        ease: "sine",
+        transformOrigin: "50% 50%",
+        opacity: 0,
+      })
+      .from(
+        txt,
+        {
+          // delay: 0.6,
+          y: 100,
+          skewY: 10,
+          ease: "sine",
+          transformOrigin: "50% 50%",
+          opacity: 0,
+          stagger: {
+            amount: 1,
+          },
+        },
+        "-=0.3"
+      );
   };
 
-  // const tl = gsap.timeline(); // Nouvelle instance de timeline
-  const HandleCLickClose = () => {
-    tl.to(".txt1", {
-      delay: 0.3,
-      y: 20,
-      ease: "sine",
-      duration: 0.7,
-      transformOrigin: "50% 20% ",
-      opacity: 0,
-      autoAlpha: 0,
-      stagger: {
-        amount: 0.7,
-      },
-    })
-      .to(
-        ".header",
-        {
-          x: "0%",
-          duration: 0.2,
-        },
-        "-=0.5"
-      )
-      .to(
-        ".txt1",
-        {
-          y: 0,
-        },
-        "-=0.5"
-      )
-      .to(".txt1", {
-        opacity: 1,
-        autoAlpha: 1,
-      });
-    setState(false);
-  };
   return (
-    <main className=" relative text-white page overflow-hidden leading-normal bg-black-400 flex min-h-screen flex-col items-center justify-center w-full">
-      {!state ? (
-        <div
-          onClick={(e) => HandleCLick()}
-          className="bg-black  rounded-full cursor-pointer p-4 "
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-8 h-"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 9h16.5m-16.5 6.75h16.5"
-            />
-          </svg>
-        </div>
-      ) : (
-        <div
-          onClick={(e) => HandleCLickClose()}
-          className="bg-black  rounded-full cursor-pointer p-4 "
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
-        </div>
-      )}
-      <div className="absolute header gap-y-4 transform px-10 py-36 flex flex-col top-0 left-[100%] translate-x-[0%] w-[30rem] min-h-screen bg-black">
-        <div className="h-16 overflow-hidden text-3xl lowercase">
-          <h2 className="txt1 text-5xl opacity-70 cursor-pointer  w-full hover:opacity-100">
-            Home
-          </h2>
-        </div>
-        <div className="h-16 overflow-hidden ">
-          <h2 className="txt1 text-5xl opacity-70 cursor-pointer w-full  lowercase">
-            About
-          </h2>
-        </div>
-        <div className="h-16 overflow-hidden">
-          <h2 className="txt1 text-5xl opacity-70 cursor-pointer w-full  lowercase">
-            work
-          </h2>
-        </div>
-        <div className="h-16 overflow-hidden">
-          <h2 className="txt1 text-5xl opacity-70 cursor-pointer w-full         lowercase">
-            Experience
-          </h2>
-        </div>
-        <div className="h-16 overflow-hidden">
-          <h2 className="txt1 text-5xl opacity-70 cursor-pointer w-full  lowercase">
-            Talks
-          </h2>
-        </div>
-        <div className="h-16 overflow-hidden">
-          <h2 className="txt1 text-5xl opacity-70 cursor-pointer w-full  lowercase">
-            Contact
-          </h2>
+    <main className=" relative p-16 text-white page overflow-hidden leading-normal bg-black-400 flex min-h-screen flex-col items-center justify-center w-full">
+      <div className="bdg scale-100 gap-y-8 transition-all ease duration-300 bg-gray-800 rounded-xl w-[30vw] h-[80vh] overflow-hidden relative ">
+        <div className="flex-col  gap-y-3 p-10 flex">
+          <div className="h-8 overflow-hidden pb-8">
+            <h2 className="h2high text-3xl ">Ma liste de Passe temps</h2>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70"> patate </span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl  opacity-70"> igname </span>
+          </div>
+          <div className="h-8 overflow-hidden">git
+            <span className="txt1 text-xl  opacity-70"> Riz </span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">carotte</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">concombre</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">poivron</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">melon</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">raifort</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">oignon</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">ail</span>
+          </div>
+          <div className="h-8 overflow-hidden">
+            <span className="txt1 text-xl opacity-70">basilic</span>
+          </div>
         </div>
       </div>
+      <button
+        onClick={(e) => handle()}
+        className="px-4 py-3 bg-black text-white my-3 rounded-full"
+      >
+        {" "}
+        Valider
+      </button>
+      <div
+        className="h-4 w-4 rounded-full transform-none bg-red-400 pointer-events-none absolute "
+        style={{ top: state.y - 8, left: state.x }}
+      ></div>
     </main>
   );
 }
