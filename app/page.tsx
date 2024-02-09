@@ -8,13 +8,15 @@ import { useState } from "react";
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   const [state, setState] = useState(false);
-  const tl = gsap.timeline(); // Nouvelle instance de timeline
+  const tl = gsap.timeline();
+  // Nouvelle instance de timeline
   const HandleCLick = () => {
     tl.to(".header", {
       x: "-100%",
       duration: 0.3,
     }).from(".txt1", {
       y: 100,
+      delay: 0.3,
       skewY: 10,
       ease: "sine",
       duration: 0.6,
@@ -31,6 +33,7 @@ export default function Home() {
   // const tl = gsap.timeline(); // Nouvelle instance de timeline
   const HandleCLickClose = () => {
     tl.to(".txt1", {
+      delay: 0.3,
       y: 20,
       ease: "sine",
       duration: 0.7,
@@ -49,9 +52,13 @@ export default function Home() {
         },
         "-=0.5"
       )
-      .to(".txt1", {
-        y: 0,
-      })
+      .to(
+        ".txt1",
+        {
+          y: 0,
+        },
+        "-=0.5"
+      )
       .to(".txt1", {
         opacity: 1,
         autoAlpha: 1,
