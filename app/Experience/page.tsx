@@ -2,16 +2,26 @@
 
 import gsap from "gsap";
 import { useEffect } from "react";
-import Transition from "./transition";
+import Transition from "../transition";
 
 export default function Home() {
   const tl = gsap.timeline();
   useEffect(() => {
-    // tl.fromTo(".page", { opacity: 0 }, { opacity: 1, duration: 1 });
+    tl.from(".txt1", {
+      duration: 0.8,
+      skew: 30,
+      transformOrigin: "50% 50%",
+      y: 160,
+      ease: "sine",
+    });
   });
+
   return (
     <main className=" relative  text-white page overflow-hidden leading-normal bg-black-400 flex min-h-screen flex-col items-center justify-center w-full">
       <Transition timeline={tl} />
+      <div className="h-36 overflow-hidden z-0">
+        <h2 className="text-9xl  txt1  ">Experience</h2>
+      </div>
     </main>
   );
 }

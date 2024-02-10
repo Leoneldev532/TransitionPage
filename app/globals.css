@@ -66,3 +66,11 @@ body {
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
   background-position: 50% 50%;
 }
+
+.transit {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.circle {
+  scale: 1;
+}
