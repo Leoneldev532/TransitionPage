@@ -4,7 +4,7 @@ const Transition = ({ timeline }: any) => {
   useEffect(() => {
     timeline
       .to(".transit", {
-        duration: 0.6,
+        duration: 0.4,
         width: "100%",
         ease: "expo.easeInOut",
       })
